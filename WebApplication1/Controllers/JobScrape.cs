@@ -62,7 +62,7 @@ namespace WebApplication1.Controllers
             foreach(var i in jobList)
             {
 
-                //Debug.WriteLine(i.InnerText);
+                var title = i.Descendants
 
 
             }
