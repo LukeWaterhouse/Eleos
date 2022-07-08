@@ -22,7 +22,9 @@ namespace Eleos // Note: actual namespace depends on the project name.
             _client.Log += Log;
 
 
-            var token = File.ReadAllText("token.txt");
+            //var token = File.ReadAllText("token.txt");
+
+            var token = "OTk0MzE0NjA0MzQxNjI0ODgz.GOiBrD.FufujgnnTf9SiqdkXzRXb8woQvlzGvP85D_lqs";
 
             await _client.LoginAsync(TokenType.Bot, token);
 

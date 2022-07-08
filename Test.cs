@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium;
 using System.Diagnostics;
 using System.Threading;
-
+using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager;
+using WebDriverManager.Helpers;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace Eleos
 {
@@ -19,7 +26,12 @@ namespace Eleos
 
             var url = "https://www.reed.co.uk/jobs/junior-software-engineer-jobs";
 
-            IWebDriver driver = new ChromeDriver("C:/Users/LukeW/Documents");
+
+            new DriverManager().SetUpDriver(new FirefoxConfig());
+
+
+            IWebDriver driver = new FirefoxDriver();
+
 
             driver.Navigate().GoToUrl(url);
 
