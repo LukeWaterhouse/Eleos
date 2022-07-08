@@ -18,7 +18,7 @@ namespace Eleos
     public class JobScrape
     {
 
-        public static Job getJob()
+        public static Job getJob(string processedHtml)
         {
 
 
@@ -31,11 +31,11 @@ namespace Eleos
                 return response;
             }
 
-            string url = "https://www.reed.co.uk/jobs/junior-software-engineer-jobs";
-            var response = CallUrl(url).Result;
+            /*string url = "https://www.reed.co.uk/jobs/junior-software-engineer-jobs";
+            var response = CallUrl(url).Result;*/
 
             var doc = new HtmlDocument();
-            doc.LoadHtml(response);
+            doc.LoadHtml(processedHtml);
 
             var jobbos = doc.DocumentNode.Descendants("article").Where(node => node.GetAttributeValue("class", "").Contains("job-result-card"));
             var list = new List<string>();
@@ -68,7 +68,6 @@ namespace Eleos
 
 
             //parse random link
-            //string randurl = "https://www.reed.co.uk/jobs/junior-software-engineer-c/47094665?source=searchResults&amp;filter=%2fjobs%2fjunior-software-engineer-jobs:";
             string randurl = "https://" + selectedLink;
 
             var randResponse = CallUrl(randurl).Result;

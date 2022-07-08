@@ -24,7 +24,7 @@ namespace Eleos // Note: actual namespace depends on the project name.
 
             //var token = File.ReadAllText("token.txt");
 
-            var token = "OTk0MzE0NjA0MzQxNjI0ODgz.GOiBrD.FufujgnnTf9SiqdkXzRXb8woQvlzGvP85D_lqs";
+            var token = "";
 
             await _client.LoginAsync(TokenType.Bot, token);
 
@@ -72,18 +72,22 @@ namespace Eleos // Note: actual namespace depends on the project name.
             if (command.Equals("test"))
             {
 
-                string title = Test.TestFunction();
+                string processedHtml = Test.GetHtml();
 
-                message.Channel.SendMessageAsync(title);
+                message.Channel.SendMessageAsync("asd");
 
             }
 
             if (command.Equals("randomjob"))
             {
+
+
                 message.Channel.SendMessageAsync($@"Hello everyone, here's the job of the day!");
 
+                string processedHtml = Test.GetHtml();
 
-                Job newJob = JobScrape.getJob();
+
+                Job newJob = JobScrape.getJob(processedHtml);
 
                 var builder = new EmbedBuilder()
                 {

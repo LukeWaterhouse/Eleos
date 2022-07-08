@@ -21,7 +21,7 @@ namespace Eleos
 {
     public class Test
     {
-        public static string TestFunction()
+        public static string GetHtml()
         {
 
             var url = "https://www.reed.co.uk/jobs/junior-software-engineer-jobs";
@@ -48,10 +48,13 @@ namespace Eleos
                 Thread.Sleep(100);         
             }
 
+
             string html = driver.PageSource;
 
+
+
             Console.WriteLine(title);
-            return title;
+            return html;
         }
     }
 }

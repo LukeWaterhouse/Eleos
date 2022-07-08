@@ -20,5 +20,9 @@ namespace Eleos
 
         public string Link { get; set; }
 
+        public string Posted { get; set; }
+
+        public string ReferenceNumber { get; set; }
+
     }
 }
