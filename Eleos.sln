@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1.csproj", "{E549D288-14ED-4233-B886-181E75398D0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eleos", "Eleos.csproj", "{5A892D13-E4ED-4989-BE95-5287F2E24A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E549D288-14ED-4233-B886-181E75398D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E549D288-14ED-4233-B886-181E75398D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E549D288-14ED-4233-B886-181E75398D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E549D288-14ED-4233-B886-181E75398D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A892D13-E4ED-4989-BE95-5287F2E24A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A892D13-E4ED-4989-BE95-5287F2E24A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A892D13-E4ED-4989-BE95-5287F2E24A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A892D13-E4ED-4989-BE95-5287F2E24A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {85A3DD62-2AC3-4B12-8BE9-0A405FBB78B5}
+		SolutionGuid = {E6A084C4-DAA4-42CB-B4ED-0614A96836C5}
 	EndGlobalSection
 EndGlobal
