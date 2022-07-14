@@ -2,35 +2,42 @@
 using Discord;
 using Discord.WebSocket;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
+using Quartz;
+using Quartz.Impl;
+using Eleos.JobPosting;
+//
 namespace Eleos // Note: actual namespace depends on the project name.
+
+
+
+//git pull --rebase origin master
 {
     class Program
     {
+
+       
         public static void Main(string[] args)
         => new Program().MainAsync().GetAwaiter().GetResult();
 
         private DiscordSocketClient _client;
-
         public async Task MainAsync()
         {
 
             _client = new DiscordSocketClient();
             _client.MessageReceived += CommandHandler;
 
-
             _client.Log += Log;
 
-
-            //var token = File.ReadAllText("token.txt");
-
-            var token = "";
+            var token = "OTk0MzE0NjA0MzQxNjI0ODgz.G4VsP5.cnF20CiEsWOKZTOvRkK8ODVUoXz1KAsmhAv2qc";
 
             await _client.LoginAsync(TokenType.Bot, token);
 
             await _client.StartAsync();
 
             await Task.Delay(-1);
+
         }
 
         private Task Log(LogMessage msg)
@@ -57,10 +64,11 @@ namespace Eleos // Note: actual namespace depends on the project name.
                 return Task.CompletedTask;
             }
 
-            if(message.Content.Contains(' '))
+            if (message.Content.Contains(' '))
             {
                 lengthOfCommand = message.Content.IndexOf(' ');
-            }else
+            }
+            else
             {
                 lengthOfCommand = message.Content.Length;
             }
@@ -72,7 +80,7 @@ namespace Eleos // Note: actual namespace depends on the project name.
             if (command.Equals("test"))
             {
 
-                string processedHtml = Test.GetHtml();
+                string processedHtml = WebDriverCode.GetHtml();
 
                 message.Channel.SendMessageAsync("asd");
 
@@ -81,41 +89,33 @@ namespace Eleos // Note: actual namespace depends on the project name.
             if (command.Equals("randomjob"))
             {
 
+                message.Channel.SendMessageAsync("> **Hi everyone!** Here's the random job of the day... \n> :man_technologist: :woman_technologist:\n");
 
-                message.Channel.SendMessageAsync($@"Hello everyone, here's the job of the day!");
-
-                string processedHtml = Test.GetHtml();
+                Job newJob = JobScrape.getJob();
 
 
-                Job newJob = JobScrape.getJob(processedHtml);
+                Color myRgbColor = new Color(23, 160, 75);
 
                 var builder = new EmbedBuilder()
                 {
-                    //Optional color
                     Title = newJob.Title,
-                  
-                    
-                    Color = Color.Green,
-                    Description = "Heres the job of the day! Click on the link to get more details..."
+                    Url = newJob.Link,
+                    Color = myRgbColor,
                 };
 
-
+                builder.WithThumbnailUrl("https://www.pngkey.com/png/full/0-8970_open-my-computer-icon-circle.png");
+                builder.WithFooter($@"{newJob.Posted}", "https://toppng.com/uploads/preview/clock-icon-11549792906rft91cjytr.png");
                 builder.AddField("Location:", $@"{newJob.Location}");
                 builder.AddField("Salary:", $@"{newJob.Salary}");
-                builder.AddField("Link:", $@"{newJob.Link}");
-
-
+                builder.AddField("Summary:", $@"{newJob.Summary}");
+                builder.AddField($@"{newJob.ReferenceNumber}", "** **");
 
                 message.Channel.SendMessageAsync("", false, builder.Build());
 
             }
-
-
             return Task.CompletedTask;
 
         }
 
-
-       
     }
 }
